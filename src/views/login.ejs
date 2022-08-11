@@ -1,0 +1,57 @@
+<%- include('includes/head') %>
+<%- include('includes/navbar') %>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 my-4">
+                    <h1 class="text-center">Entre em sua conta</h1>
+                    <p class="text-center lead">Faça login ou crie sua conta</p>
+
+                    <%- include('includes/messages') %>
+
+                    <div class="row">
+                        <div class="col-lg">
+                        <h3>Cadastre sua conta</h3>
+                            <form class="form-cadastro" action="/login/registro" method="post">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <div class="mb-3">
+                                    <label class="form-label">Nome de usuário</label>
+                                    <input type="text" class="form-control" name="username" aria-describedby="Nome de usuário">
+                                    <p class="text-danger create-username"></p>
+                                </div>
+                                <div class="mb-3">
+                                  <label class="form-label">Endereço de email</label>
+                                  <input type="email" class="form-control" id="emailCad" name="email" aria-describedby="Endereço de email">
+                                  <p class="text-danger create-email"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Senha</label>
+                                    <input type="password" class="form-control" id="passwordCad" name="password" aria-describedby="Senha de usuário">
+                                    <p class="text-danger create-password"></p>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Criar Conta</button>
+                              </form>
+                        </div>
+                        <div class="col-lg">
+                            <h3>Faça login</h3>
+                            <form class="form-login" action="/login/entrar" method="post">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <div class="mb-3">
+                                    <label class="form-label">Endereço de email</label>
+                                    <input type="email" class="form-control" id="emailLogin" name="email" aria-describedby="Endereço de email">
+                                    <p class="text-danger login-email"></p>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Senha</label>
+                                    <input type="password" class="form-control" id="passwordLogin" name="password" aria-describedby="Senha de usuário">
+                                    <p class="text-danger login-password"></p>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Login</button>
+                              </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+        </div>
+<%- include('includes/footer') %>

@@ -1,0 +1,45 @@
+<%- include('includes/head') %>
+<%- include('includes/navbar') %>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 my-4">
+                    <h1 class="text-center">Contatos</h1>
+                    <p class="text-center lead">Crie/Edite seus contatos</p>
+
+                    <%- include('includes/messages') %>
+                    <% if (!contato._id) { %>
+                        <form class="form-contato" action="/contato/registro" method="post">
+                    <% } else { %>
+                        <form class="form-contatoEdit" action="/contato/<%-contato._id%>/editar" method="post">
+                    <% } %>
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <div class="mb-3">
+                                <label class="form-label">Nome:</label>
+                                <input value = "<%= contato.name %>" type="text" class="form-control" name="name" aria-describedby="Nome de usuário">
+                                <p class="text-danger create-name"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Sobrenome:</label>
+                                <input value = "<%= contato.lastName %>" type="text" class="form-control" name="lastName" aria-describedby="Nome de usuário">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">email:</label>
+                                <input value = "<%= contato.email %>" type="text" class="form-control" name="email" aria-describedby="Nome de usuário">
+                                <p class="text-danger create-email"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">telefone:</label>
+                                <input value = "<%= contato.email %>" type="text" class="form-control" name="phone" aria-describedby="Nome de usuário">
+                                <p class="text-danger create-phone"></p>
+                            </div>
+                            <% if (!contato._id) { %>
+                                <button type="submit" class="btn btn-primary">Cadastrar Contato</button>
+                            <% } else { %>
+                                <button type="submit" class="btn btn-primary">Editar Contato</button>
+                            <% } %>
+                        </form>
+                </div>
+            </div>
+        </div>
+<%- include('includes/footer') %>

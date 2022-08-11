@@ -1,0 +1,45 @@
+<%- include('includes/head') %>
+<%- include('includes/navbar') %>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 my-4">
+                    <%- include('includes/messages') %>
+                    
+                <h1 class="text-left">Conta - <%= user.username %></h1>
+                <form action="/<%= user._id %>/editar" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">DASH</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01" name="theme">
+                            <option <% if (!saveUser || saveUser.theme == 'padrao') { %> selected <% } %> value="padrao">Padrão</option>
+                            <option <% if (saveUser && saveUser.theme == 'dark') { %> selected <% } %> value="dark">Dark</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Alterar Nome de Usuário:</label>
+                        <input placeholder = "<%= user.username %>" type="text" class="form-control" name="username" aria-describedby="Nome de usuário">
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </div>
+                </form>
+
+                <form action="/<%= user._id %>/redefinir" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+                    <div class="mb-3">
+                    <button type="submit" class="btn btn-danger">Redefinir Contatos</button>
+                    </div>
+                </form>
+                <form action="/<%= user._id %>/excluir" method="post">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" class="btn btn-danger">Excluir Conta</button>
+                </form>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+        </div>
+<%- include('includes/footer') %>
