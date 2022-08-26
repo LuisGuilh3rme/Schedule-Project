@@ -1,4 +1,4 @@
-# Schedule-Project - Work in progress
+# Schedule-Project
 
 This is a small schedule project, using modules like **express, babel, webpack, validator, etc...**
 You can store your contacts in the database, create a account, change your username and navbar theme.
